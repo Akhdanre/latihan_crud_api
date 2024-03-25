@@ -3,7 +3,7 @@ GET http://localhost:3000/api/products
 
 ### Getting a resource
 
-GET http://localhost:3000/api/products?id=3
+GET http://localhost:3000/api/products?id=1
 
 ### Creating a resource
 
@@ -37,7 +37,7 @@ Content-Type: application/json
     "is_available" : false
 }
 ### just update is_available
-PUT http://localhost:3000/api/products/3
+PUT http://localhost:3000/api/products/1
 Content-Type: application/json
 
 {
@@ -50,7 +50,7 @@ Content-Type: application/json
 
 ### delete data 
 
-DELETE  http://localhost:3000/api/products/2
+DELETE  http://localhost:3000/api/products/1
 Content-Type: application/json
 
 
