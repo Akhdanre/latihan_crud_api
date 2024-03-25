@@ -3,7 +3,7 @@ GET http://localhost:3000/api/products
 
 ### Getting a resource
 
-GET http://localhost:3000/api/products?id=1
+GET http://localhost:3000/api/products?id=3
 
 ### Creating a resource
 
@@ -16,7 +16,7 @@ Content-Type: application/json
     "category" : "fashion"
 }
 
-###
+### Create a resource
 POST http://localhost:3000/api/products
 Content-Type: application/json
 
@@ -36,8 +36,8 @@ Content-Type: application/json
     "category" : "decoration",
     "is_available" : false
 }
-### just update is available
-PUT http://localhost:3000/api/products/1
+### just update is_available
+PUT http://localhost:3000/api/products/3
 Content-Type: application/json
 
 {
@@ -49,5 +49,13 @@ Content-Type: application/json
 
 
 ### delete data 
-DELETE  http://localhost:3000/api/products/1
+
+DELETE  http://localhost:3000/api/products/2
+Content-Type: application/json
+
+
+
+### not found endpoint
+
+DELETE  http://localhost:3000/api/category
 Content-Type: application/json
