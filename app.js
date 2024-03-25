@@ -15,7 +15,6 @@ app.get("/api/products", async function (req, res, next) {
             data = await db.newDb().query(query, [id])
             res.json(data.rows)
         } catch (err) {
-            console.log("something wrong", err)
             next(err)
         }
     } else {
@@ -24,7 +23,6 @@ app.get("/api/products", async function (req, res, next) {
             data = await db.newDb().query(query)
             res.json(data.rows)
         } catch (err) {
-            console.log("something wrong", err)
             next(err)
         }
     }
