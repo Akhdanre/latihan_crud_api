@@ -3,7 +3,7 @@ GET http://localhost:3000/api/products
 
 ### Getting a resource
 
-GET http://localhost:3000/api/products?id=200
+GET http://localhost:3000/api/products?id=1
 
 ### Creating a resource
 
@@ -25,3 +25,29 @@ Content-Type: application/json
     "price" : 20000,
     "category" : "olahraga"
 }
+
+### udpate all data (name, price, category, is_available
+PUT http://localhost:3000/api/products/1
+Content-Type: application/json
+
+{
+    "name" : "Bunga",
+    "price" : 50000,
+    "category" : "decoration",
+    "is_available" : false
+}
+### just update is available
+PUT http://localhost:3000/api/products/1
+Content-Type: application/json
+
+{
+    "name" : "Bunga",
+    "price" : 50000,
+    "category" : "decoration",
+    "is_available" : false
+}
+
+
+### delete data 
+DELETE  http://localhost:3000/api/products/1
+Content-Type: application/json
