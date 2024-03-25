@@ -1,0 +1,27 @@
+### Listing all resources
+GET http://localhost:3000/api/products
+
+### Getting a resource
+
+GET http://localhost:3000/api/products?id=200
+
+### Creating a resource
+
+POST http://localhost:3000/api/products
+Content-Type: application/json
+
+{
+    "name" : "T_shirt",
+    "price" : 20000,
+    "category" : "fashion"
+}
+
+###
+POST http://localhost:3000/api/products
+Content-Type: application/json
+
+{
+    "name" : "Raket",
+    "price" : 20000,
+    "category" : "olahraga"
+}
