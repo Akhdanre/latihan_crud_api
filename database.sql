@@ -29,6 +29,9 @@ from
 where
     table_name = 'products';
 
+SELECT
+    *
+FROM
+    products;
 
-    
-SELECT * FROM products;
+ALTER SEQUENCE products_id_seq RESTART WITH 1;
