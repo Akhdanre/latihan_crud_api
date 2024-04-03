@@ -1,0 +1,226 @@
+openapi: "3.0.2"
+info:
+  title: Belajar Dokumentasi
+  version: "1.0"
+  description: Documentation CRUD API
+  contact:
+    name: Akhdan Robbani
+servers:
+  - url: http://localhost:3000/v1
+paths:
+  /products:
+    get:
+      tags:
+        - "User"
+      parameters:
+        - schema:
+            type: integer
+          name: id
+          in: query
+        - schema:
+            type: string
+          name: keywoard
+          in: query
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: success get data
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        price:
+                          type: integer
+                        is_available:
+                          type: string
+
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    example: 400
+                  message:
+                    type: string
+                    example: success get data
+    post:
+      tags:
+        - "User"
+      requestBody:
+        $ref: "#/components/requestBodies/dataProduct"
+
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: success upload data
+                  data:
+                    type: integer
+                    example: 1
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    example: 400
+                  message:
+                    type: string
+                    example: BAD REQUEST
+                  data:
+                    example: null
+
+  /products/{id}:
+    put:
+      tags:
+        - "User"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        $ref: "#/components/requestBodies/dataProduct"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: success update data
+                  data:
+                    type: integer
+                    example: 1
+
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    example: 400
+                  message:
+                    type: string
+                    example: BAD REQUEST
+                  data:
+                    example: null
+    delete:
+      tags:
+        - "User"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: success delete
+                  data:
+                    type: integer
+                    example: 1
+
+        "400":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    example: 400
+                  message:
+                    type: string
+                    example: BAD REQUEST
+
+components:
+  schemas:
+    product:
+      title: product
+      type: object
+      properties:
+        name:
+          type: string
+          example: Raket
+        price:
+          type: integer
+          example: 10000
+        category:
+          type: string
+          example: olahraga
+        is_available:
+          type: boolean
+          example: true
+  requestBodies:
+    dataProduct:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                example: Raket
+              price:
+                type: integer
+                example: 10000
+              category:
+                type: string
+                example: olahraga
+              is_available:
+                type: boolean
+                example: true

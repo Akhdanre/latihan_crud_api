@@ -1,13 +1,16 @@
 ### Listing all resources
-GET http://localhost:3000/api/products
+GET http://localhost:3000/v1/products
 
 ### Getting a resource
 
-GET http://localhost:3000/api/products?id=1
+GET http://localhost:3000/v1/products?id=1
+
+###
+GET http://localhost:3000/v1/products?keywoard=T
 
 ### Creating a resource
 
-POST http://localhost:3000/api/products
+POST http://localhost:3000/v1/products
 Content-Type: application/json
 
 {
@@ -17,7 +20,7 @@ Content-Type: application/json
 }
 
 ### Create a resource
-POST http://localhost:3000/api/products
+POST http://localhost:3000/v1/products
 Content-Type: application/json
 
 {
@@ -27,7 +30,7 @@ Content-Type: application/json
 }
 
 ### udpate all data (name, price, category, is_available
-PUT http://localhost:3000/api/products/1
+PUT http://localhost:3000/v1/products/1
 Content-Type: application/json
 
 {
@@ -37,25 +40,25 @@ Content-Type: application/json
     "is_available" : false
 }
 ### just update is_available
-PUT http://localhost:3000/api/products/1
+PUT http://localhost:3000/v1/products/2
 Content-Type: application/json
 
 {
-    "name" : "Bunga",
+    "name" : "supra fit",
     "price" : 50000,
-    "category" : "decoration",
+    "category" : "motor",
     "is_available" : false
 }
 
 
 ### delete data 
 
-DELETE  http://localhost:3000/api/products/1
+DELETE  http://localhost:3000/v1/products/1
 Content-Type: application/json
 
 
 
 ### not found endpoint
 
-DELETE  http://localhost:3000/api/category
+DELETE  http://localhost:3000/category
 Content-Type: application/json
