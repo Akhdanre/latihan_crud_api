@@ -13,7 +13,7 @@ paths:
       tags:
         - "User"
       security:
-          - TokenAuth: []
+        - TokenAuth: []
       parameters:
         - schema:
             type: integer
@@ -52,18 +52,9 @@ paths:
                           type: string
 
         "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code:
-                    type: integer
-                    example: 400
-                  message:
-                    type: string
-                    example: success get data
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
     post:
       tags:
         - "User"
@@ -93,27 +84,16 @@ paths:
                     type: integer
                     example: 1
         "400":
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code:
-                    type: integer
-                    example: 400
-                  message:
-                    type: string
-                    example: BAD REQUEST
-                  data:
-                    example: null
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
 
   /products/{id}:
     put:
       tags:
         - "User"
       security:
-          - TokenAuth: []
+        - TokenAuth: []
       parameters:
         - in: path
           name: id
@@ -144,25 +124,15 @@ paths:
                     example: 1
 
         "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code:
-                    type: integer
-                    example: 400
-                  message:
-                    type: string
-                    example: BAD REQUEST
-                  data:
-                    example: null
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+
     delete:
       tags:
         - "User"
       security:
-          - TokenAuth: []
+        - TokenAuth: []
       parameters:
         - in: path
           name: id
@@ -186,20 +156,10 @@ paths:
                   data:
                     type: integer
                     example: 1
-
         "400":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code:
-                    type: integer
-                    example: 400
-                  message:
-                    type: string
-                    example: BAD REQUEST
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
 
 components:
   schemas:
@@ -225,3 +185,34 @@ components:
       type: apiKey
       in: header
       name: X-API-Key
+  responses:
+    "400":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                example: 400
+              message:
+                type: string
+                example: BAD REQUEST
+              data:
+                example: null
+    "401":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                example: 401
+              message:
+                type: string
+                example: User unauthorized
+              data:
+                example: null

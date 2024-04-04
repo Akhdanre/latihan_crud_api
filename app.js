@@ -6,20 +6,6 @@ const v1Router = require("./routes/v1/index")
 const webResponse = require("./model/web_response").webResponse
 const cors = require("cors")
 
-
-let authToken = function AuthToken(req, res, next) {
-    let token = req.headers["x-api-key"]
-    if (token != "tokenRahasia") {
-        return webResponse(res, 401, "user unauthorized")
-    }
-    next()
-}
-app.use(cors())
-app.use(express.json())
-
-app.use(authToken)
-app.use("/v1", v1Router)
-
 const swaggerUi = require('swagger-ui-express');
 const fs = require("fs")
 const YAML = require('yaml')
@@ -28,7 +14,21 @@ const { Console } = require("console")
 const file = fs.readFileSync('api_docs.yaml', 'utf8')
 const swaggerDocument = YAML.parse(file)
 
+let authToken = function AuthToken(req, res, next) {
+    let token = req.headers["x-api-key"]
+    if (token != "tokenRahasia") {
+        return webResponse(res, 401, "user unauthorized")
+    }
+    next()
+}
 
+
+
+app.use(express.json())
+app.use(cors())
+
+app.use(authToken)
+app.use("/v1", v1Router)
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 

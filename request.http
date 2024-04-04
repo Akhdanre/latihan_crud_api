@@ -1,6 +1,6 @@
 ### Listing all resources
 GET http://localhost:3000/v1/products
-
+X-API-Key: tokenRahasia
 ### Getting a resource
 
 GET http://localhost:3000/v1/products?id=1
