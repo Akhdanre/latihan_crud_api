@@ -12,6 +12,8 @@ paths:
     get:
       tags:
         - "User"
+      security:
+          - TokenAuth: []
       parameters:
         - schema:
             type: integer
@@ -65,8 +67,13 @@ paths:
     post:
       tags:
         - "User"
+      security:
+        - TokenAuth: []
       requestBody:
-        $ref: "#/components/requestBodies/dataProduct"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/product"
 
       responses:
         "201":
@@ -105,6 +112,8 @@ paths:
     put:
       tags:
         - "User"
+      security:
+          - TokenAuth: []
       parameters:
         - in: path
           name: id
@@ -112,7 +121,10 @@ paths:
             type: integer
           required: true
       requestBody:
-        $ref: "#/components/requestBodies/dataProduct"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/product"
       responses:
         "200":
           description: OK
@@ -149,6 +161,8 @@ paths:
     delete:
       tags:
         - "User"
+      security:
+          - TokenAuth: []
       parameters:
         - in: path
           name: id
@@ -205,22 +219,9 @@ components:
         is_available:
           type: boolean
           example: true
-  requestBodies:
-    dataProduct:
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              name:
-                type: string
-                example: Raket
-              price:
-                type: integer
-                example: 10000
-              category:
-                type: string
-                example: olahraga
-              is_available:
-                type: boolean
-                example: true
+  securitySchemes:
+    TokenAuth:
+      description: authentication to access endpoint
+      type: apiKey
+      in: header
+      name: X-API-Key
